@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+ <div class="container">
+        <div class="box">
+            <h2>Signup</h2>
+            <form action="register" method="post">
+                {% csrf_token %}
+                <div class="input_box">
+                    <input type="text" class="name" name="username" required>
+                    <label>Username</label>
+                </div>
+
+				<div class="input_box">
+                    <input type="text" class="name" name="first_name" required>
+                    <label>First Name</label>
+                </div>
+
+				<div class="input_box">
+                    <input type="text" class="name" name="last_name" required>
+                    <label>Last Name</label>
+                </div>
+
+				<div class="input_box">
+                    <input type="email" class="email" name="email" required>
+                    <label>Email</label>
+                </div>
+
+				<div class="input_box">
+                    <input type="password" class="password" name="password" required>
+                    <label>Password</label>
+                </div>
+
+				<div class="input_box">
+                    <input type="password" class="password" name="password1" required>
+                    <label>Confirm Password</label>
+					<div class="password_checkbox"><input type="checkbox"><p>Show Password</p></div>
+                </div>
+
+                <button class="signup_button" type="submit">Create Account</button>
+                <div class="login_link"><a href="{% url 'credentials:login' %}">Already have an Account ?</a></div>
+                <p style="text-align;center:">
+                    {% for msg in messages %}
+                    {{msg}}
+                    {% endfor %}
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
